@@ -19,7 +19,9 @@ export const AuthProvider = ({ children }) => {
 
     const login = async (email, password) => {
         try {
-            const res = await axios.post('http://localhost:5000/api/auth/login', { email, password });
+            const res = await axios.post('https://mess-management-system-backend-fq5e.onrender.com
+
+/api/auth/login', { email, password });
             setUser(res.data);
             localStorage.setItem('user', JSON.stringify(res.data));
             return { success: true };
@@ -35,7 +37,9 @@ export const AuthProvider = ({ children }) => {
 
     const register = async (userData) => {
         try {
-            await axios.post('http://localhost:5000/api/auth/register', userData);
+            await axios.post('https://mess-management-system-backend-fq5e.onrender.com
+
+/api/auth/register', userData);
             return { success: true };
         } catch (error) {
             return { success: false, message: error.response?.data?.message || 'Registration failed' };
