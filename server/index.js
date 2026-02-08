@@ -1,5 +1,6 @@
 const express = require('express');
 const cors = require('cors');
+const path = require('path');
 const connectDB = require('./db');
 
 // Import Routes
@@ -18,12 +19,20 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+// Serve static files from React build
+app.use(express.static(path.join(__dirname, '../client/dist')));
+
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/menu', menuRoutes);
 app.use('/api/reservations', reservationRoutes);
 app.use('/api/feedback', feedbackRoutes);
 app.use('/api/admin', adminRoutes);
+
+// Fallback to React for client-side routing
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+});
 
 const PORT = process.env.PORT || 5001;
 
