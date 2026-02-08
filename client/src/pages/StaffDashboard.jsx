@@ -7,9 +7,7 @@ const StaffDashboard = () => {
     useEffect(() => {
         const fetchReservations = async () => {
             try {
-                const res = await axios.get('https://mess-management-system-backend-fq5e.onrender.com
-
-/api/reservations');
+                const res = await axios.get('https://mess-management-system-backend-fq5e.onrender.com/api/reservations');
                 setReservations(res.data);
             } catch (error) {
                 console.error(error);
