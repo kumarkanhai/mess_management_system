@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import API_BASE_URL from '../config/api';
 
 const AdminDashboard = () => {
     const [stats, setStats] = useState({});
@@ -23,7 +24,7 @@ const AdminDashboard = () => {
     const handleWasteSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('http://localhost:5000/api/admin/waste', wasteData);
+            await axios.post(`${API_BASE_URL}/api/admin/waste`, wasteData);
             alert('Waste logged successfully');
         } catch (error) {
             console.error(error);

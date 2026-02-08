@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import API_BASE_URL from '../config/api';
 
 const StaffDashboard = () => {
     const [reservations, setReservations] = useState([]);
@@ -7,7 +8,7 @@ const StaffDashboard = () => {
     useEffect(() => {
         const fetchReservations = async () => {
             try {
-                const res = await axios.get('http://localhost:5000/api/reservations');
+                const res = await axios.get(`${API_BASE_URL}/api/reservations`);
                 setReservations(res.data);
             } catch (error) {
                 console.error(error);

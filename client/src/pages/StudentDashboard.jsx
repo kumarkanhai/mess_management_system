@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { useAuth } from '../context/AuthContext';
+import API_BASE_URL from '../config/api';
 
 const StudentDashboard = () => {
     const { user } = useAuth();
@@ -10,7 +11,7 @@ const StudentDashboard = () => {
     useEffect(() => {
         const fetchMenu = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/menu?date=${selectedDate}`);
+                const res = await axios.get(`${API_BASE_URL}/api/menu?date=${selectedDate}`);
                 setMenu(res.data);
             } catch (error) {
                 console.error("Error fetching menu", error);
@@ -21,7 +22,7 @@ const StudentDashboard = () => {
 
     const handleReserve = async (menuItem) => {
         try {
-            await axios.post('http://localhost:5000/api/reservations', {
+            await axios.post(`${API_BASE_URL}/api/reservations`, {
                 userId: user._id,
                 menuId: menuItem._id,
                 date: selectedDate,
