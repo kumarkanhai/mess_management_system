@@ -10,7 +10,7 @@ const StudentDashboard = () => {
     useEffect(() => {
         const fetchMenu = async () => {
             try {
-                const res = await axios.get(`http://localhost:5000/api/menu?date=${selectedDate}`);
+                const res = await axios.get(`https://mess-management-system-backend-fq5e.onrender.com/api/menu?date=${selectedDate}`);
                 setMenu(res.data);
             } catch (error) {
                 console.error("Error fetching menu", error);
@@ -21,7 +21,7 @@ const StudentDashboard = () => {
 
     const handleReserve = async (menuItem) => {
         try {
-            await axios.post('http://localhost:5000/api/reservations', {
+            await axios.post('https://mess-management-system-backend-fq5e.onrender.com/api/reservations', {
                 userId: user._id,
                 menuId: menuItem._id,
                 date: selectedDate,
