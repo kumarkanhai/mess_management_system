@@ -23,9 +23,7 @@ const AdminDashboard = () => {
     const handleWasteSubmit = async (e) => {
         e.preventDefault();
         try {
-            await axios.post('https://mess-management-system-backend-fq5e.onrender.com
-
-/api/admin/waste', wasteData);
+            await axios.post('https://mess-management-system-backend-fq5e.onrender.com/api/admin/waste', wasteData);
             alert('Waste logged successfully');
         } catch (error) {
             console.error(error);
